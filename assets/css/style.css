@@ -1,0 +1,142 @@
+.navbar-custom {
+  background: lightblue;
+  padding: 12px 20px;
+}
+
+.navbar-custom .navbar-brand span {
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.navbar-custom .navbar-brand i {
+  color: #facc15;
+  font-size: 22px;
+}
+
+.navbar-custom .navbar-brand:hover span {
+  color: #fde68a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+.custom-navbar {
+  background-color: #2563eb;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.navbar-brand i {
+  color: yellow;
+}
+
+.expense-container {
+  display: flex;
+  gap: 20px;
+  margin: 30px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #dddddd;
+}
+
+.form-card {
+  flex: 1;
+}
+
+.list-card {
+  flex: 1;
+}
+
+#expenseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#expenseForm input {
+  padding: 10px;
+}
+
+.save-button {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.error-message {
+  display: none;
+  padding: 10px;
+  background-color: pink;
+  color: darkred;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#totalExpense {
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+}
+
+#expenseList {
+  padding: 0;
+  list-style: none;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.expense-name {
+  flex: 1;
+}
+
+.expense-price {
+  color: red;
+}
+
+.delete-button,
+.clear-button {
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+.clear-section {
+  margin-top: 20px;
+  text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .expense-container {
+    flex-direction: column;
+    margin: 20px;
+  }
+}
