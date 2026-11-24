@@ -6,6 +6,7 @@ const errorMessage = document.getElementById("errorMessage");
 const expenseList = document.getElementById("expenseList");
 const totalExpense = document.getElementById("totalExpense");
 const emptyMessage = document.getElementById("emptyMessage");
+const clearAllButton = document.getElementById("clearAllButton");
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
@@ -40,6 +41,8 @@ function renderExpenses() {
 
   totalExpense.textContent = "Rp " + total.toLocaleString("id-ID");
 
+  clearAllButton.disabled = expenses.length === 0;
+
   if (expenses.length === 0) {
     emptyMessage.style.display = "block";
   } else {
@@ -52,28 +55,36 @@ expenseForm.addEventListener("submit", function (event) {
 
   const name = nameInput.value.trim();
   const amount = amountInput.value.trim();
+  const numericAmount = Number(amount);
 
   if (name === "" || amount === "") {
-    errorMessage.textContent = "Please complete all fields.";
+    errorMessage.textContent = "Lengkapi nama dan nominal pengeluaran.";
     errorMessage.style.display = "block";
-  } else {
-    errorMessage.style.display = "none";
-
-    const newExpense = {
-      id: Date.now(),
-      name: name,
-      amount: Number(amount),
-    };
-    expenses.push(newExpense);
-
-    saveExpenses();
-
-    renderExpenses();
-
-    expenseForm.reset();
+    return;
   }
-});
 
+  if (!Number.isSafeInteger(numericAmount) || numericAmount <= 0) {
+    errorMessage.textContent =
+      "Masukkan nominal berupa angka bulat lebih dari 0.";
+    errorMessage.style.display = "block";
+    return;
+  }
+
+  errorMessage.style.display = "none";
+
+  const newExpense = {
+    id: Date.now(),
+    name: name,
+    amount: numericAmount,
+  };
+
+  expenses.push(newExpense);
+
+  saveExpenses();
+  renderExpenses();
+  expenseForm.reset();
+  nameInput.focus();
+});
 
 clearAllButton.addEventListener("click", function () {
   expenses = [];
@@ -82,6 +93,5 @@ clearAllButton.addEventListener("click", function () {
 
   renderExpenses();
 });
-
 
 renderExpenses();
